@@ -1,0 +1,686 @@
+<!docktype>
+<html>
+	<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel+Decorative">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- social-media icons -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<title>9Heroes Online</title>
+	</head>
+    <style>
+        /* https://www.youtube.com/watch?v=pY2oOlJn8QE&feature=youtu.be */
+
+/********** Select Hightlight style **********/
+::selection {
+	background: #b2321f;
+	color: #ffcb8d;
+}
+
+/********** Font style **********/
+h1 {
+	font-family: 'Cinzel Decorative', sans-serif;
+	font-size: 36px;
+	text-align: center;
+	color: black;
+	filter: drop-shadow(1px 1px 3px #A22202);
+	position:absolute;
+	top: 80%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+h2{
+	font-family: 'Cinzel Decorative', sans-serif;
+	font-size: 34px;
+	font-weight: 300; 
+	text-align: center;
+	color: #F9C470;
+	position:relative; 
+
+}
+
+h3 {
+	font-family: 'Cinzel Decorative', sans-serif;
+	font-size:28px;
+	font-weight: 600;
+	color: #ad835a;
+	text-shadow: 0px 0px 4px #000000;
+	text-align: center;
+	position:relative; 
+	padding-top: 70px;
+}
+
+h4 {
+	font-family: 'Cinzel Decorative', sans-serif;
+	font-size: 28px;
+	text-align: center;
+	letter-spacing: 8px;
+	color: #734a32;
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 160px;
+	left: 0;
+	right: 0;
+}
+
+p, .text-style {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 26px;
+	font-weight: 400;
+	text-align: center;
+	line-height: 1.6;
+	color: #71675b;
+	margin: 16px auto 16px auto;
+	width: 75%;
+	max-width: 60%;
+}
+
+.list-style {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 26px;
+	font-weight: 400;
+	text-align: left;
+	line-height: 1.8;
+	display: inline-block;
+	color: #71675b;
+	padding: 0px;
+}
+
+.menu{
+	font-family: 'Work Sans', sans-serif;
+	font-weight: 800;
+}
+
+/********** Language Show/Hide **********/
+.nl [lang=en] {
+	display: none; /* this will hide any tag contain lang=en if body's class=nl */
+}
+.en [lang=nl] {
+	display: none; /* this will hide any tag contain lang=nl if body's class=en */
+}
+
+body {
+	margin: 0;
+
+	background-image: url(https://i.imgur.com/2bmPkZU.png);
+	background-repeat: repeat;
+}
+
+/********** Header **********/
+nav {
+	width:100%;
+	height:65px;
+	position:fixed;
+	background: rgba(33,33,33,0.8);
+	border-bottom: 1px solid rgba(172,109,7,0.8);
+	z-index:1;
+}
+
+nav .mini-logo {
+	float: left;
+	padding: 2px 20px;
+	position: relative;
+	height: 60px;
+}
+
+/* Language Icons */
+nav .lang-position{
+	float: right;
+	padding-right: 50px;
+
+}
+nav .lang-icon{
+	margin-top: 15px;
+	clear: both;
+}
+
+nav .gray-effect{
+	filter: grayscale(85%) blur(1px);
+}
+
+/* Nav menu */
+nav ul {
+	margin: 0;
+}
+
+nav li {
+	position: relative;
+	display: inline-block;
+	margin-left: 2%;
+	padding-top: 23px;
+}
+
+nav a {
+	color: #F9C470;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 17px;
+}
+
+nav a:hover {
+	color: #F9C470;
+}
+
+nav a::before {
+	content: '';
+	height: 2px;
+	background-color: #A22202;
+
+	position: absolute;
+	top: 34px;
+	left:-7px;
+
+	width: 0%;
+	transition: all ease-in-out 250ms;
+}
+
+nav a:hover::before {
+	width: 120%;
+}
+
+/* nav links */
+#menu-game,#menu-heroes,#menu-trailer,#menu-release{
+	position:relative;
+	bottom:100px;
+	visibility: hidden;
+}
+
+/* Header background */
+.header-background {
+	overflow: hidden; /* to hide extra parts after sclae up(affect) */
+	position: relative;
+}
+
+.header-size{
+	height: 750px;
+}
+
+.header-affect{
+	animation: breathing 20s ease-in-out infinite;
+}
+
+@keyframes breathing {
+	0% {transform: scale(1);}
+	25% {transform: scale(1.1);}
+	50% {transform: scale(1);}
+	75% {transform: scale(1.1);}
+	100% {transform: scale(1);}
+}
+
+#header-image{
+	background-image: url(https://eldritch.qodeinteractive.com/wp-content/uploads/2019/10/main-home-rev-1.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	animation: breath 40s ease-in-out infinite;
+}
+
+/* Logo */
+#large-logo{
+	position: absolute;
+	width: 750px;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.fading{
+	animation:fading 10s normal
+}
+
+@keyframes fading{
+	0%{opacity:0}
+	50%{opacity:1}
+	100%{opacity:1}
+}
+
+
+/********** Divider **********/
+.divider {
+	height: 55px;
+	position: relative;
+}
+
+.divider-header {
+	margin-top:-25px;
+}
+
+.divider-footer {
+	margin-top: 80px;
+	margin-bottom: -25px;
+}
+
+.divider-rule {
+	background: url(https://senseiminimal.github.io/Dragonic/img/divider-sprite.png) repeat-x 50% 100%;
+	border: 0;
+	height: 55px;
+	left: 50%;
+	margin: 0 0 0 -82px;
+	position: absolute;
+	top: 5px;
+	width: 164px;
+}
+
+.divider:before {
+	left: 0;
+	margin-right: 82px;
+	right: 50%;
+	background: url(https://senseiminimal.github.io/Dragonic/img/divider-sprite.png) repeat-x 50% 0;
+	content: "";
+	height: 55px;
+	position: absolute;
+	top: 0;
+}
+.divider:after {
+	left: 50%;
+	margin-left: 82px;
+	right: 0;
+	background: url(https://senseiminimal.github.io/Dragonic/img/divider-sprite.png) repeat-x 50% 0;
+	content: "";
+	height: 55px;
+	position: absolute;
+	top: 0;
+}
+
+/********** Content **********/
+.content {
+	position:relative;
+	margin-top: 120px;
+}
+
+/* content divider */
+.content-divider {
+	background: url(https://senseiminimal.github.io/Dragonic/img/blog-separator-2.png) 50% 100%;
+	background-repeat:no-repeat;
+	position: relative;
+	margin-top: 80px;
+	margin-bottom: 80px;
+}
+
+/* list */
+.center-list {
+	text-align: center;
+}
+
+/* heroes images */
+#warrior-image{
+	position: relative;
+	float: right;
+	padding-right: 10%;
+}
+
+#sura-image{
+	position: relative;
+	float: left;
+	padding-left: 10%;
+}
+
+#ninja-image{
+	position: relative;
+	float: right;
+	padding-right: 10%;
+}
+
+#shaman-image{
+	position: relative;
+	float: left;
+	padding-left: 10%;
+}
+
+.video-trailer {
+	display: block;
+	margin: 0 auto; 
+	padding-top: 30px;
+} 
+
+#countdown{
+	text-align:center;
+	padding-bottom: 50px;
+}
+
+/********** footer **********/
+
+.footer-size{
+	height: 250px;
+}
+
+#footer-image{
+	background-image: url(https://senseiminimal.github.io/Dragonic/img/dark_leather.png);
+	background-repeat: repeat;
+}
+
+.socialmedia-icons{
+	text-align: center;
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	left: 0;
+	right: 0;
+	margin-top: 96px;
+	font-size:32px;
+	letter-spacing: 8px;
+}
+
+.socialmedia-icons a{
+	color: #F9C470;
+}
+
+.socialmedia-icons a:hover {
+	text-shadow: 2px 2px 3px #FF0000;
+}
+
+@media screen and (max-width: 850px) {
+
+	h1{
+		font-size: 24px;
+	}
+
+	h2{
+		font-size: 26px;
+	}
+
+	h3, h4{
+		clear:both;
+		font-size: 24px;
+	}
+
+	p, .text-style, .list-style {
+		font-size: 16 px;
+		width: 90%;
+		max-width:90%;
+	}
+
+	nav .mini-logo {
+			height: 70%;
+			padding: 10px 10px;
+		}
+
+	nav ul li a{
+		font-size: 8px;
+	}
+
+	nav .lang-icon{
+		height: 20px;
+	}
+
+	#large-logo{
+		width: 80%;
+	}
+
+	/* heroes images */
+	#warrior-image{
+		position: relative;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	#sura-image{
+		position: relative;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	#ninja-image{
+		position: relative;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	#shaman-image{
+		position: relative;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.video-trailer{
+		width: 80%;
+	}
+
+	nav .lang-position{
+		padding-right: 10px;
+	}
+
+}
+    </style>
+	<body class="en">
+
+<!-- HEADER -->
+		<header>
+			<nav>
+				<img src="https://i.imgur.com/ZGbshic.png" alt="mini-logo" class="mini-logo">
+
+				<div class="lang-position">
+						<input type="image" src="https://i.imgur.com/otkn0xq.png" alt="english" class="english-icon lang-icon" title="English language">
+						<input type="image" src="https://i.imgur.com/5TqlHpV.png" alt="dutch" class="dutch-icon lang-icon gray-effect" title="Dutch language">
+				</div>
+
+				<ul>
+					<li class="menu" lang="en"><a href="#menu-game">Game</a></li>
+					<li class="menu" lang="en"><a href="#menu-heroes">Heroes</a></li>
+					<li class="menu" lang="en"><a href="#menu-trailer">Trailer</a></li>
+					<li class="menu" lang="en"><a href="#menu-release">Release</a></li>
+
+					<li class="menu" lang="nl"><a href="#menu-game">Spel</a></li>
+					<li class="menu" lang="nl"><a href="#menu-heroes">Helden</a></li>
+					<li class="menu" lang="nl"><a href="#menu-trailer">Trailer</a></li>
+					<li class="menu" lang="nl"><a href="#menu-release">Publicatie</a></li>
+				</ul>
+
+			</nav>
+
+			<div class="header-background header-size">
+
+				<div class="header-affect">
+					<div id="header-image" class="header-size"></div>
+				</div>
+
+				<img src="https://i.imgur.com/EBqMebX.png" alt="large-logo" id="large-logo" class="fading">
+
+				<h1 class="fading" lang="en"> Be the HERO of your own STORY!! </h1>
+				<h1 class="fading" lang="nl"> Wees de HELD van je eigen VERHAAL!! </h1>
+
+			</div>
+
+		</header>
+<!-- /HEADER -->
+
+
+		<div class="divider  divider-header">
+			<hr class="divider-rule">
+		</div>
+
+<!-- CONTENT -->
+		<div class="content">
+
+			<span id="menu-game"></span>
+
+			<h2 lang="en">YOUR SWORD FOR THE DRAGON GOD </h2>
+			<h2 lang="nl">JOUW ZWAARD VOOR DE DRAAKGOD </h2>
+
+			<p lang="en"> The appearance of the Metin stones has torn deep rifts through the once flourishing world of the Dragon God. War has erupted between the kingdoms – wild animals have transformed into fearsome beasts and the dead have arisen to bloodthirsty, demonic life.<br><br> Defend your kingdom and hurl yourself into incredible battles full of action and magic. Raise your weapons against the forces of evil and become a living legend in one of Europe’s biggest MMORPGs!</p>
+			<p lang="nl"> De verschijning van de Metin-stenen heeft diepe kloven door de eens zo bloeiende wereld van de Drakengod gescheurd. Er is oorlog uitgebroken tussen de koninkrijken - wilde dieren zijn veranderd in angstaanjagende beesten en de doden zijn opgekomen in bloeddorstig, demonisch leven. <br> <br> Verdedig je koninkrijk en gooi jezelf in ongelooflijke veldslagen vol actie en magie. Hef je wapens op tegen de krachten van het kwaad en word een levende legende in een van Europa's grootste MMORPG's!</p>
+
+			<div class="content-divider">
+				<br>
+			</div>
+
+			<h2 lang="en">SHARPEN YOUR BLADE AND MIND</h2>
+			<h2 lang="nl">SCHERP JE BLAD EN GEEST</h2>
+
+			<div class="center-list">
+				<ul class="list-style">
+					<li lang="en">Experience epic PvE adventures and merciless PvP duels.</li>
+					<li lang="en">Fight through maps and dungeons against dragons and sinister demon lords.</li>
+					<li lang="en">Charge into fast-paced battles – even against entire hordes of enemies.</li>
+					<li lang="en">Become a mighty warrior and increase your character’s level right up to 120.</li>
+
+					<li lang="nl">Beleef epische PvE-avonturen en meedogenloze PvP-duels.</li>
+					<li lang="nl">Vecht door kaarten en kerkers tegen draken en sinistere demonenheren.</li>
+					<li lang="nl">Stort je in snelle gevechten - zelfs tegen hele hordes vijanden.</li>
+					<li lang="nl">Word een machtige krijger en verhoog het niveau van je personage tot 120.</li>
+
+				</ul>
+			</div>
+
+			<div class="content-divider">
+				<br>
+			</div>
+
+			<h2 lang="en">CHOOSE YOUR PATH AND FORGE ALLIANCES</h2>
+			<h2 lang="nl">KIES UW PAD EN SLUIT ALLIANTIES</h2>
+
+			<div class="center-list">
+				<ul class="list-style">   
+					<li lang="en">Choose your kingdom: Shinsoo, Chunjo or Jinno.</li>
+					<li lang="en">Found a guild with friends and build on your lands.</li>
+					<li lang="en">Fight on lightning-fast mounts and tame cool pets.</li>
+					<li lang="en">Continually improve your weapons and equipment through a selection of crafting systems.</li>
+					<li lang="en">Take part in regular seasonal and community events.</li>
+
+					<li lang="nl">Kies je koninkrijk: Shinsoo, Chunjo of Jinno.</li>
+					<li lang="nl">Sticht een gilde met vrienden en bouw op je land.</li>
+					<li lang="nl">Vecht op bliksemsnelle rijdieren en tamme coole huisdieren.</li>
+					<li lang="nl">Verbeter continu je wapens en uitrusting door middel van een selectie van crafting-systemen.</li>
+					<li lang="nl">Neem deel aan regelmatige seizoens- en gemeenschapsevenementen.</li>
+
+				</ul>
+			</div>
+
+			<div class="content-divider">
+				<br>
+			</div>
+
+			<span id="menu-heroes"></span>
+
+			<h2 lang="en">CHOOSE YOUR HERO</h2>
+			<h2 lang="nl">KIES JE HELD</h2>
+
+			<img src="https://en-wiki.metin2.gameforge.com/images/7/7d/Warrior_Male.png" alt="warrior" id="warrior-image">
+			<h3 lang="en"> -Warrior </h3>
+			<h3 lang="nl"> -Krijger </h3>
+			<p lang="en"> Thanks to their skills, their arming and the ability to wear heavy armor the Warrior plays a central role in close combat. They only strive for great physical strength and balanced mind. <br> According to their specialization, they can cause devastating damage with Two-Handed weaponry or they can parry the attacks of their enemy with both sword and shield.</p>
+			<p lang="nl"> Dankzij hun vaardigheden, hun bewapening en het vermogen om zware bepantsering te dragen, speelt de Warrior een centrale rol in close combat. Ze streven alleen naar grote fysieke kracht en een evenwichtige geest. <br> <br> Volgens hun specialisatie kunnen ze verwoestende schade aanrichten met tweehandige wapens of kunnen ze de aanvallen van hun vijand pareren met zowel zwaard als schild. </p>
+
+			<img src="https://en-wiki.metin2.gameforge.com/images/c/c7/Sura_Male.png" alt="sura" id="sura-image">
+			<h3 lang="en"> -Sura </h3>
+			<h3 lang="nl"> -Sura </h3>
+			<p lang="en"> The Sura is a fighter who came in possession of magic forces when they agreed to let the devil seed grow in their arm. Therefor they are able to swing swords in close combat skilfully, or attack from a distance with black magic.<br> By specialisation they improve either attack magic or acquire additional strengthening magic. </p>
+			<p lang="nl"> De Sura is een jager die in het bezit kwam van magische krachten toen ze ermee instemden om het duivelszaad in hun arm te laten groeien. Daardoor kunnen ze vakkundig zwaarden in close combat zwaaien of van een afstand aanvallen met zwarte magie. <br> Door specialisatie verbeteren ze aanvalsmagie of verkrijgen ze extra versterkende magie. </p>
+
+			<img src="https://en-wiki.metin2.gameforge.com/images/4/49/Ninja_Female.png" alt="ninja" id="ninja-image">
+			<h3 lang="en"> -Ninja </h3>
+			<h3 lang="nl"> -Ninja </h3>
+			<p lang="en"> Ninjas are professional killers who are able ambush you at any time. To allow this mobility and quickness, they carry only only light and protective equipment. Only the rarest minds and bodies can survive the brutal training needed to become a Ninja. Their great skills can quickly change the tide of a battle.<br> According to specialization the Ninjas are masters in the use of daggers and bows. </p>
+			<p lang="nl"> Ninja's zijn professionele moordenaars die je op elk moment in een hinderlaag kunnen lokken. Om deze mobiliteit en snelheid mogelijk te maken, dragen ze alleen lichte en beschermende uitrusting. Alleen de meest zeldzame geesten en lichamen kunnen de meedogenloze training overleven die nodig is om een Ninja te worden. Hun grote vaardigheden kunnen het tij van een gevecht snel veranderen. <br> Volgens specialisatie zijn de Ninja's meesters in het gebruik van dolken en strikken. </p>
+
+			<img src="https://en-wiki.metin2.gameforge.com/images/e/e3/Shaman_Male.png" alt="shaman" id="shaman-image">
+			<h3 lang="en"> -Shaman </h3>
+			<h3 lang="nl"> -Shaman </h3>
+			<p lang="en"> Shaman are versatile magic-based characters with the capability to deal impressive damage with offensive spells while also strengthening themselves and their allies with invaluable support skills.<br> With their unique abilities, a shaman can be indispensable in group play and also can take on challenges alone, if they so wish.</p>
+			<p lang="nl"> Sjamaan zijn veelzijdige, op magie gebaseerde personages die indrukwekkende schade kunnen toebrengen aan aanstootgevende spreuken, terwijl ze zichzelf en hun bondgenoten versterken met onschatbare ondersteunende vaardigheden. <br> Met hun unieke vaardigheden kan een sjamaan onmisbaar zijn in groepsspel en kan hij het ook opnemen uitdagingen alleen, als ze dat willen. </p>
+
+			<div class="content-divider">
+				<br>
+			</div>
+
+			<span id="menu-trailer"></span>
+
+			<h2 lang="en"> Begin Your Journey</h2>
+			<h2 lang="nl"> Begin je reis</h2>
+
+			<p lang="en"> Become a part of the legendary oriental action MMO – now also on Steam! Put your skill to the test in epic PvE battles against    dragons and sinister demon lords, enter merciless PvP duels and become a true martial arts master! </p>
+			<p lang="nl"> Word onderdeel van de legendarische oosterse actie MMO - nu ook op Steam! Test je vaardigheden in epische PvE-gevechten tegen draken en sinistere demonenheren, ga meedogenloze PvP-duels binnen en word een echte vechtsportmeester! </p>
+
+			<iframe class="video-trailer" width="860" height="415" src="https://www.youtube.com/embed/QigNM_UgjUA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+			<div class="content-divider">
+				<br>
+			</div>
+
+			<span id="menu-release"></span>
+
+			<h2 lang="en"> Release Date </h2>
+			<h2 lang="nl"> Datum van public </h2>
+
+			<center>
+				<span id="countdown" class="text-style"></span>
+			</center>
+
+		</div>
+<!-- /CONTENT -->
+
+		<div class="divider divider-footer">
+			<hr class="divider-rule">
+		</div>
+
+<!-- FOOTER -->
+		<footer>
+			<div class="footer-size" id="footer-image">
+				<div class="socialmedia-icons">
+					<a href="#"><i class="fa fa-twitter"></i></a>
+					<a href="#"><i class="fa fa-facebook"></i></a>
+					<a href="#"> <i class="fa fa-youtube"></i></a>
+					<a href="#"> <i class="fa fa-instagram"></i></a>
+				</div>
+
+				<h4 lang="en"> By: Saoud Salem Ba-khmais </h4>
+				<h4 lang="nl"> Door: Saoud Salem Ba-khmais </h4>
+
+			</div>
+		</footer>
+<!-- /FOOTER -->
+
+	</body>
+    <script>
+        /********** Language Show/Hide **********/
+$(document).ready(function(){
+  $(".english-icon").click(function(event){
+    $("body ").addClass("en"); /* this will add class en to body */
+    $(" body ").removeClass("nl"); /* this will remove class nl from body */
+    $("input.dutch-icon").addClass("gray-effect"); /* this will add class gray-effect to input.dutch-icon */
+    $("input.english-icon").removeClass("gray-effect"); /* this will remove class gray-effect from input.english-icon */
+  });
+});
+
+$(document).ready(function(){
+  $(".dutch-icon").click(function(event){
+    $("body ").addClass("nl"); /* this will add class nl to body */
+    $("body ").removeClass("en"); /* this will remove class en from body */
+    $("input.english-icon").addClass("gray-effect"); /* this will add class gray-effect to input.english-icon */
+    $("input.dutch-icon").removeClass("gray-effect"); /* this will remove class gray-effect to input.dutch-icon */
+  });
+});
+
+/********** Countdown **********/
+// Set the date we're counting down to
+var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("countdown").innerHTML = days + " days | " + hours + " hours | "
+  + minutes + " minutes | " + seconds + " seconds ";
+    
+  // If the count down is over, write some text 
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("countdown").innerHTML = "RELEASED";
+  }
+}, 1000); // 1000 = 1 sec
+    </script>
+</html>

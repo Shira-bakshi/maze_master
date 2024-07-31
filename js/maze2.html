@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maze Generator</title>
+<style>
+body{
+  background-color: cadetblue;
+}
+  canvas {
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(114, 84, 84);
+
+  }
+</style>
+</head>
+<body>
+  <h1>Create Your Maze</h1>
+  <label for="mazeWidth">Enter Maze Width:</label>
+  <input type="number" id="mazeWidth" value="20" min="5">
+  <label for="mazeHeight">Enter Maze Height:</label>
+  <input type="number" id="mazeHeight" value="20" min="5">
+  <button onclick="generateMaze()">Generate Maze</button>
+  <button onclick="downloadImage()">Download Maze</button>
+  <canvas id="mazeCanvas"></canvas>
+  <script>
+    function generateMaze() {
+      const width = parseInt(document.getElementById('mazeWidth').value);
+      const height = parseInt(document.getElementById('mazeHeight').value);
+      createMaze(width, height);
+    }
+
+    function createMaze(width, height) {
+      const canvas = document.getElementById('mazeCanvas');
+      const context = canvas.getContext('2d');
+      const cellSize = 20;
+
+      canvas.width = (width + 1) * cellSize;
+      canvas.height = (height + 1) * cellSize;
+
+      context.fillStyle = 'black';
+      context.fillRect(0, 0, canvas.width, canvas.height);
+
+      context.fillStyle = 'white';
+
+      // Initialize grid
+      const grid = [];
+      for (let x = 0; x < width; x++) {
+        grid[x] = [];
+
+        for (let y = 0; y < height; y++) {
+          grid[x][y] = true; // true means wall, false means path
+          grid[x][y].fillStyle = 'white';
+
+        }
+      }
+
+      // Create maze using Backtracking algorithm
+      function carve(x, y) {
+        const directions = [
+          [0, -1], // up
+          [1, 0], // right
+          [0, 1], // down
+          [-1, 0] // left
+        ];
+        directions.sort(() => Math.random() - 0.5);
+
+        grid[x][y] = false;
+        context.clearRect((x + 1) * cellSize, (y + 1) * cellSize, cellSize, cellSize);
+
+        for (const [dx, dy] of directions) {
+          const nx = x + dx;
+          const ny = y + dy;
+
+          if (nx >= 0 && ny >= 0 && nx < width && ny < height && grid[nx][ny]) {
+            const nx2 = x + dx * 2;
+            const ny2 = y + dy * 2;
+
+            if (nx2 >= 0 && ny2 >= 0 && nx2 < width && ny2 < height && grid[nx2][ny2]) {
+              grid[nx][ny] = false;
+              context.clearRect((nx + 1) * cellSize, (ny + 1) * cellSize, cellSize, cellSize);
+              grid[nx2][ny2] = false;
+              context.fillStyle='white'
+              context.clearRect((nx2 + 1) * cellSize, (ny2 + 1) * cellSize, cellSize, cellSize);
+              carve(nx2, ny2);
+            }
+          }
+        }
+      }
+
+      carve(0, 0);
+
+      // Draw maze boundary and create entrance and exit
+      context.fillStyle = 'black';
+      for (let x = 0; x < width + 1; x++) {
+        if (x !== 1) { // Leave entrance open
+          context.fillRect(x * cellSize, 0, cellSize, cellSize); // Top border
+        }
+        if (x !== width) { // Leave exit open
+          context.fillRect(x * cellSize, (height) * cellSize, cellSize, cellSize); // Bottom border
+        }
+      }
+      for (let y = 0; y < height + 1; y++) {
+        context.fillRect(0, y * cellSize, cellSize, cellSize); // Left border
+        context.fillRect((width) * cellSize, y * cellSize, cellSize, cellSize); // Right border
+      }
+
+      // Create entrance and exit
+      context.clearRect(cellSize, 0, cellSize, cellSize); // Entrance
+      context.clearRect((width - 1) * cellSize, (height) * cellSize, cellSize, cellSize); // Exit
+    }
+
+    function downloadImage() {
+      const canvas = document.getElementById('mazeCanvas');
+      const link = document.createElement('a');
+      console.log(canvas[0]);
+
+      link.download = 'maze.jpg';
+      link.href = canvas.toDataURL();
+      link.click();
+    }
+  </script>
+</body>
+</html>
